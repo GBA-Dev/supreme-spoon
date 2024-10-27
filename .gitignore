@@ -31,5 +31,13 @@
 *.out
 *.app
 
+# Builds
+build/
+*.elf
+*.sav
+
 # Mac
 .DS_Store
+
+# Visual Studio Code
+.vscode
