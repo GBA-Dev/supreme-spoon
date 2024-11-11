@@ -1,4 +1,5 @@
 #include "gameplay_scene.h"
+#include "scene_manager.h" // Include SceneManager header
 
 #include "bn_bg_palettes.h"
 #include "bn_color.h"
@@ -74,11 +75,11 @@ void GameplayScene::draw()
     }
 }
 
-bool GameplayScene::should_transition(std::unique_ptr<Scene> &next_scene)
+bool GameplayScene::should_transition(SceneManagerNamespace::SceneType &next_scene_type)
 {
     if (bn::keypad::start_pressed())
     {
-        next_scene = std::make_unique<MainMenuScene>();
+        next_scene_type = SceneManagerNamespace::SceneType::MainMenu;
         return true;
     }
     return false;

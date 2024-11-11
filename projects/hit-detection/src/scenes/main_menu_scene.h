@@ -15,7 +15,7 @@ public:
 
     void update() override;
     void draw() override;
-    bool should_transition(std::unique_ptr<Scene>& next_scene) override;
+    bool should_transition(SceneManagerNamespace::SceneType &next_scene_type) override;
     void handle_collisions() override;
 
 private:

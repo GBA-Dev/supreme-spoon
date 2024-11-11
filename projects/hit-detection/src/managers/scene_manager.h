@@ -4,6 +4,14 @@
 #include "scene.h"
 #include <memory>
 
+namespace SceneManagerNamespace {
+    enum class SceneType {
+        MainMenu,
+        Gameplay,
+        None  // No transition
+    };
+}
+
 class SceneManager
 {
 public:
@@ -16,8 +24,7 @@ public:
 
 private:
     std::unique_ptr<Scene> current_scene_;
-    // transitioning_
-    std::unique_ptr<Scene> next_scene_;
+    SceneManagerNamespace::SceneType next_scene_type_;
     bool transitioning_;
 };
 

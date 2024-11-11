@@ -1,6 +1,7 @@
 #include "main_menu_scene.h"
 #include "gameplay_scene.h"
 #include "nerd.h"
+#include "scene_manager.h" // Include SceneManager header
 
 #include "bn_keypad.h"
 #include "bn_log.h"
@@ -18,7 +19,7 @@ MainMenuScene::MainMenuScene() : _background(), _nerd()
 
 MainMenuScene::~MainMenuScene()
 {
-    BN_LOG("MainMenuScene destory");
+    BN_LOG("MainMenuScene destroyed");
 }
 
 void MainMenuScene::update()
@@ -33,12 +34,12 @@ void MainMenuScene::draw()
     // No specific draw logic required; Butano handles sprite rendering.
 }
 
-bool MainMenuScene::should_transition(std::unique_ptr<Scene> &next_scene)
+bool MainMenuScene::should_transition(SceneManagerNamespace::SceneType &next_scene_type)
 {
     // Transition to the next scene if the start button is pressed
     if (bn::keypad::start_pressed())
     {
-        next_scene = std::make_unique<GameplayScene>();
+        next_scene_type = SceneManagerNamespace::SceneType::Gameplay;
         return true;
     }
     return false;

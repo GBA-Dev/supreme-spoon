@@ -16,7 +16,7 @@ public:
     void update() override;
     void draw() override;
 
-    bool should_transition(std::unique_ptr<Scene>& next_scene) override;
+    bool should_transition(SceneManagerNamespace::SceneType &next_scene_type) override;
     void handle_collisions() override;
 
 private:
@@ -26,7 +26,7 @@ private:
     bn::vector<Actor*, 32> _enemies;
     int _spawn_timer; // Timer for spawning enemies
 
-    // Declare on_hit method
+    // Declare on_hit method`
     void on_hit(const bn::sprite_ptr& projectile, Actor& enemy);
 };
 
