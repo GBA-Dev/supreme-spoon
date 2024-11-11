@@ -16,6 +16,9 @@ public:
 
 private:
     std::unique_ptr<Scene> current_scene_;
+    // transitioning_
+    std::unique_ptr<Scene> next_scene_;
+    bool transitioning_;
 };
 
 #endif // SCENE_MANAGER_H

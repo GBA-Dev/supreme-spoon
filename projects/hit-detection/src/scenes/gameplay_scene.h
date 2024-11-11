@@ -4,7 +4,8 @@
 #include <vector>
 #include "scene.h"
 #include "hero.h"
-
+#include "background_actor.h"
+#include "bn_vector.h"
 
 class GameplayScene : public Scene
 {
@@ -16,10 +17,17 @@ public:
     void draw() override;
 
     bool should_transition(std::unique_ptr<Scene>& next_scene) override;
+    void handle_collisions() override;
 
 private:
-    Hero _hero;
-    std::vector<Actor *> _actors;
+    Hero _hero; // Use Hero correctly
+    BackgroundActor _background;
+    bn::vector<Actor*, 32> _actors;
+    bn::vector<Actor*, 32> _enemies;
+    int _spawn_timer; // Timer for spawning enemies
+
+    // Declare on_hit method
+    void on_hit(const bn::sprite_ptr& projectile, Actor& enemy);
 };
 
 #endif // GAMEPLAY_SCENE_H

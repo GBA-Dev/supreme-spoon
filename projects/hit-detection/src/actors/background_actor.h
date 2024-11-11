@@ -3,6 +3,7 @@
 
 #include "actor.h"
 #include "bn_regular_bg_ptr.h"
+#include "collision_behavior.h"
 
 class BackgroundActor : public Actor
 {
@@ -10,8 +11,14 @@ public:
     BackgroundActor();
     ~BackgroundActor() override;
 
-    void update() override;
+    void update(int hero_x, int hero_y) override;
     void draw() override;
+
+    // Updated getter for collision behavior
+    const CollisionBehavior *collision_behavior() const override;
+
+    void destroy() override;               // Add destroy method
+    void take_damage(int damage) override; // Add take_damage method
 
 private:
     bn::regular_bg_ptr _clouds_bg;
@@ -19,6 +26,7 @@ private:
     bn::regular_bg_ptr _glacial_mountains;
     bn::regular_bg_ptr _clouds_mg;
     int x_parallax_speed = 3; // Adjust speed to create parallax effect
+    CollisionBehavior _collision_behavior; // Collision box for Nerd
 };
 
 #endif // BACKGROUND_ACTOR_H

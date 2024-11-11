@@ -18,10 +18,10 @@ int main()
     {
         scene_manager.draw();
 
-        if (frameCounter % 2 == 0)
-        {
+        // if (frameCounter % 2 == 0)
+        // {
             scene_manager.update();
-        }
+        // }
 
         frameCounter++;
 

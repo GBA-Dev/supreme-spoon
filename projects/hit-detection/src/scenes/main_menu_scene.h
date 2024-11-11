@@ -15,8 +15,8 @@ public:
 
     void update() override;
     void draw() override;
-
     bool should_transition(std::unique_ptr<Scene>& next_scene) override;
+    void handle_collisions() override;
 
 private:
     bn::vector<bn::sprite_ptr, 32> _text_sprites;
