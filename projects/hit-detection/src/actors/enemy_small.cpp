@@ -33,10 +33,10 @@ void EnemySmall::update(int hero_x, int hero_y)
 
     int distance = bn::abs(delta_x) + bn::abs(delta_y);
 
-    if (_is_approaching && distance <= 30)
-    {
-        _is_approaching = false;
-    }
+    // if (_is_approaching && distance <= 30)
+    // {
+    //     _is_approaching = false;
+    // }
 
     if (_is_approaching)
     {

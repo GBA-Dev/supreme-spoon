@@ -12,9 +12,9 @@
 MainMenuScene::MainMenuScene() : _background(), _nerd()
 {
     // Initialize the text generator and create the "Start Game" text
-    bn::sprite_text_generator text_generator(common::variable_8x16_sprite_font);
-    text_generator.set_center_alignment();
-    text_generator.generate(0, 40, "Start Game", _text_sprites);
+    // bn::sprite_text_generator text_generator(common::variable_8x16_sprite_font);
+    // text_generator.set_center_alignment();
+    // text_generator.generate(0, 40, "Start Game", _text_sprites);
 }
 
 MainMenuScene::~MainMenuScene()

@@ -10,7 +10,7 @@ Hero::Hero() : _hero_sprite(bn::sprite_items::hero_tile.create_sprite()),
                _debounce(0),
                _collision_behavior(16, 16),
                _hero_action(bn::create_sprite_animate_action_forever(
-                   _hero_sprite, 16, bn::sprite_items::hero_tile.tiles_item(), 0, 1))
+                   _hero_sprite, 16, bn::sprite_items::hero_tile.tiles_item(), 0, 0))
 {
     _collision_behavior.set_position(_hero_sprite.x().right_shift_integer(), _hero_sprite.y().right_shift_integer());
 }
@@ -28,25 +28,25 @@ void Hero::update(int, int)
     {
         _hero_sprite.set_x(_hero_sprite.x() - 1);
         _hero_action = bn::create_sprite_animate_action_forever(
-            _hero_sprite, 16, bn::sprite_items::hero_tile.tiles_item(), 0, 1);
+            _hero_sprite, 16, bn::sprite_items::hero_tile.tiles_item(), 0, 0);
     }
     if (bn::keypad::right_held())
     {
         _hero_sprite.set_x(_hero_sprite.x() + 1.5);
         _hero_action = bn::create_sprite_animate_action_forever(
-            _hero_sprite, 16, bn::sprite_items::hero_tile.tiles_item(), 2, 3);
+            _hero_sprite, 16, bn::sprite_items::hero_tile.tiles_item(), 0, 0);
     }
     if (bn::keypad::up_held())
     {
         _hero_sprite.set_y(_hero_sprite.y() - 1.5);
         _hero_action = bn::create_sprite_animate_action_forever(
-            _hero_sprite, 16, bn::sprite_items::hero_tile.tiles_item(), 4, 5);
+            _hero_sprite, 16, bn::sprite_items::hero_tile.tiles_item(), 0, 0);
     }
     if (bn::keypad::down_held())
     {
         _hero_sprite.set_y(_hero_sprite.y() + 1.5);
         _hero_action = bn::create_sprite_animate_action_forever(
-            _hero_sprite, 16, bn::sprite_items::hero_tile.tiles_item(), 6, 7);
+            _hero_sprite, 16, bn::sprite_items::hero_tile.tiles_item(), 0, 0);
     }
 
     // Update collision behavior position to follow the hero

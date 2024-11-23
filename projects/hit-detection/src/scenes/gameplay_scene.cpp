@@ -19,6 +19,7 @@ GameplayScene::GameplayScene() : _hero(), _background(), _spawn_timer(0)
 
     // Add hero to actors
     _actors.push_back(&_hero);
+    _background.set_x_parallax_speed(15);
 }
 
 GameplayScene::~GameplayScene()
@@ -49,17 +50,20 @@ void GameplayScene::update()
 
     // Update the spawn timer and spawn new enemies every 5 seconds
     _spawn_timer++;
-    if (_spawn_timer >= 300) // Assuming 60 FPS, 300 frames = 5 seconds
+    if (_spawn_timer >= 150) // Assuming 60 FPS, 300 frames = 5 seconds
     {
         _spawn_timer = 0;
         bn::random random_generator;
-        for (int i = 0; i < 3; ++i)
+        if (_actors.size() < 10 && _enemies.size() < 10) // Check the length of _actors and _enemies
         {
-            int x = 150 + (i * 20);                        // Fixed x position
-            int y = random_generator.get_int() % 161 - 80; // Random y between -80 and 80
-            EnemySmall *enemy = new EnemySmall(x, y);
-            _actors.push_back(enemy);
-            _enemies.push_back(enemy);
+            for (int i = 0; i < 3; ++i)
+            {
+                int x = 150 + (i * 20);                        // Fixed x position
+                int y = random_generator.get_int() % 161 - 80; // Random y between -80 and 80
+                EnemySmall *enemy = new EnemySmall(x, y);
+                _actors.push_back(enemy);
+                _enemies.push_back(enemy);
+            }
         }
     }
 
